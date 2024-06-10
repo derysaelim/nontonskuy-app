@@ -1,11 +1,23 @@
 package com.widyawacana.nontonskuy.ui
 
 import android.content.Context
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -17,8 +29,6 @@ import com.widyawacana.nontonskuy.data.Database.AppDatabase
 import com.widyawacana.nontonskuy.data.Reminder
 import com.widyawacana.nontonskuy.data.Repository.ReminderRepository
 import com.widyawacana.nontonskuy.utils.setAlarm
-import com.widyawacana.nontonskuy.viewmodel.ReminderViewModel
-import com.widyawacana.nontonskuy.viewmodel.ReminderViewModelFactory
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,7 +36,7 @@ import com.widyawacana.nontonskuy.viewmodel.ReminderViewModelFactory
 fun JadwalPengingat(context: Context) {
     val db = Room.databaseBuilder(context, AppDatabase::class.java, "app-database").build()
     val repository = ReminderRepository(db.reminderDao())
-    val viewModel: ReminderViewModel = viewModel(factory = ReminderViewModelFactory(repository))
+//    val viewModel: ReminderViewModel = viewModel(factory = ReminderViewModelFactory(repository))
 
     val judulFilm = remember { mutableStateOf("") }
     val namaBioskop = remember { mutableStateOf("") }
@@ -127,7 +137,7 @@ fun JadwalPengingat(context: Context) {
                         jamNontonFilm = jamNontonFilm.value,
                         hargaTiket = hargaTiket.value
                     )
-                    viewModel.addReminder(reminder)
+//                    viewModel.addReminder(reminder)
                     setAlarm(context, reminder)
                 },
                 colors = ButtonDefaults.buttonColors(
@@ -146,9 +156,9 @@ fun JadwalPengingat(context: Context) {
             }
 
             Spacer(modifier = Modifier.height(24.dp))
-
+/*
             LazyColumn {
-                items(viewModel.reminders) { savedReminder ->
+//                items(viewModel.reminders) { savedReminder ->
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -199,6 +209,9 @@ fun JadwalPengingat(context: Context) {
                     }
                 }
             }
+
+ */
         }
     }
+
 }
