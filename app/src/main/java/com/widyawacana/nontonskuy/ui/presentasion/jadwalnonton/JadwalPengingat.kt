@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.sp
 import androidx.room.Room
 import com.widyawacana.nontonskuy.data.Database.AppDatabase
 import com.widyawacana.nontonskuy.data.Reminder
-import com.widyawacana.nontonskuy.data.Repository.ReminderRepository
 import com.widyawacana.nontonskuy.utils.setAlarm
 
 
@@ -35,7 +34,7 @@ import com.widyawacana.nontonskuy.utils.setAlarm
 @Composable
 fun JadwalPengingat(context: Context) {
     val db = Room.databaseBuilder(context, AppDatabase::class.java, "app-database").build()
-    val repository = ReminderRepository(db.reminderDao())
+//    val repository = ReminderRepository(db.reminderDao())
 //    val viewModel: ReminderViewModel = viewModel(factory = ReminderViewModelFactory(repository))
 
     val judulFilm = remember { mutableStateOf("") }
