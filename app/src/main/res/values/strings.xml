@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">nontonskuy-app</string>
+    <string name="menu_home">Beranda</string>
+    <string name="menu_bioskop">Bioskop</string>
+    <string name="menu_jadwal">Jadwal</string>
+    <string name="menu_profile">Profile</string>
 </resources>
