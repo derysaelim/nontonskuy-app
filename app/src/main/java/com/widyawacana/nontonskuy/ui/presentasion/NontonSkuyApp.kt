@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -30,8 +31,11 @@ import androidx.navigation.compose.rememberNavController
 import com.widyawacana.nontonskuy.R
 import com.widyawacana.nontonskuy.ui.navigation.NavigationItem
 import com.widyawacana.nontonskuy.ui.navigation.Screen
+import com.widyawacana.nontonskuy.ui.presentasion.bioskop.BioskopScreen
 import com.widyawacana.nontonskuy.ui.presentasion.home.HomeScreen
 import com.widyawacana.nontonskuy.ui.presentasion.login.LoginScreen
+import com.widyawacana.nontonskuy.ui.presentasion.profile.ProfileScreen
+import com.widyawacana.nontonskuy.ui.presentasion.splash.SplashScreen
 import com.widyawacana.nontonskuy.utils.shouldShowBottomBar
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -50,7 +54,7 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
     ) { contentPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Login.route,
+            startDestination = Screen.Splash.route,
             modifier = modifier.padding(contentPadding)
         ) {
             composable(Screen.Beranda.route) {
@@ -58,7 +62,7 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
             }
 
             composable(Screen.Bioskop.route) {
-                HomeScreen(navController = navController)
+                BioskopScreen(navController = navController)
             }
 
             composable(Screen.Jadwal.route) {
@@ -66,7 +70,11 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
             }
 
             composable(Screen.Profile.route) {
-                HomeScreen(navController = navController)
+                ProfileScreen(navController = navController)
+            }
+
+            composable(Screen.Splash.route) {
+                SplashScreen(navController = navController)
             }
 
             composable(Screen.Login.route) {
@@ -76,27 +84,7 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
             composable(Screen.Register.route) {
                 RegisterScreen(navController = navController)
             }
-//
-//            composable(Screen.ContactUs.route) {
-//                ContactUsScreen(navController = navController)
-//            }
-//
-//            composable(Screen.TermCondition.route) {
-//                TermConditionScreen(navController = navController)
-//            }
-//
-//            composable(Screen.About.route) {
-//                AboutScreen(navController = navController)
-//            }
-//
-//            composable(Screen.Resep.route) {
-//                ResepScreen(navController = navController)
-//            }
-//
-//            composable(Screen.MenuSarapan.route) {
-//                MenuSarapanScreen(navController = navController)
-//            }
-//
+
 //            composable(Screen.DetailResep.route + "/{id}",
 //                arguments = listOf(navArgument("id") { type = NavType.IntType })
 //            ) { navBackStackEntry ->
@@ -105,56 +93,7 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
 //                    id = navBackStackEntry.arguments?.getInt("id")
 //                )
 //            }
-//
-//            composable(Screen.DetailWebinar.route + "/{id}",
-//                arguments = listOf(navArgument("id") { type = NavType.IntType })
-//            ) { navBackStackEntry ->
-//                DetailWebinarScreen(
-//                    navController = navController,
-//                    id = navBackStackEntry.arguments?.getInt("id")
-//                )
-//            }
-//
-//            composable(Screen.PerkembanganKehamilan.route) {
-//                PerkembanganKehamilanScreen(navController = navController)
-//            }
-//
-//            composable(Screen.StatusPerkembanganKehamilan.route) {
-//                StatusPerkembanganKehamilanScreen(navController = navController)
-//            }
-//
-//            composable(Screen.GiziAnakAwal.route) {
-//                giziawalpage(navController = navController)
-//            }
-//
-//            composable(Screen.PageGiziAnak.route) {
-//                pagegzianak(navController = navController)
-//            }
-//
-//            composable(Screen.StatusGiziAnak.route) {
-//                StatusGiziAnakScreen(navController = navController)
-//            }
-//
-//            composable(Screen.DetailArtikel.route + "/{id}",
-//                arguments = listOf(navArgument("id") { type = NavType.IntType })
-//            ) { navBackStackEntry ->
-//                detailartikel(
-//                    navController = navController,
-//                    id = navBackStackEntry.arguments?.getInt("id")
-//                )
-//            }
-//
-//            composable(Screen.Login.route) {
-//                LoginScreen(navController = navController)
-//            }
-//
-//            composable(Screen.Register.route) {
-//                PageRegister(navController = navController)
-//            }
-//
-//            composable(Screen.Chatbot.route) {
-//                ChatbotScreen()
-//            }
+
         }
     }
 }
@@ -178,7 +117,7 @@ private fun BottomBar(
             ),
             NavigationItem(
                 title = stringResource(id = R.string.menu_bioskop),
-                icon = Icons.Default.Star,
+                icon = Icons.Default.LocationOn,
                 screen = Screen.Bioskop
             ),
             NavigationItem(

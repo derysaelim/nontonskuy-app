@@ -104,4 +104,7 @@ dependencies {
     // firebase
     // google auth
     implementation("com.google.android.gms:play-services-auth:21.2.0")
+
+    //splash screen
+    implementation("androidx.core:core-splashscreen:1.2.0-alpha01")
 }
