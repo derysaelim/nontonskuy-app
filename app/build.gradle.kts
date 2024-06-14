@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -62,6 +65,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,9 +74,51 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation ("androidx.room:room-runtime:2.5.0")
-    kapt ("androidx.room:room-compiler:2.5.0")
+    //Permission
+    implementation("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
+
+    //Navigation
+    implementation ("androidx.navigation:navigation-compose:2.5.3")
+    implementation ("androidx.compose.material3:material3:1.1.0-alpha02")
+
+    // Data Store
+    implementation ("androidx.datastore:datastore-preferences:1.1.1")
+
+    // navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // material 3
+    implementation("androidx.compose.material3:material3:1.3.0-beta01")
+
+
+
+    // Lifecycle
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0")
     implementation ("androidx.room:room-ktx:2.5.0")
+
+    // coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.2")
+
+    // Data-Store
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+    // hilt
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-compiler:2.48.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    // firebase
+    // google auth
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
+// Retrofit for API requests
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // ViewModel and LiveData for MVVM architecture
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
+    implementation ("androidx.lifecycle:lifecycle-livedata:2.3.1")
 }
