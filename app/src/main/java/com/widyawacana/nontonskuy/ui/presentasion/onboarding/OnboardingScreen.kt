@@ -75,132 +75,132 @@ fun OnBoardingContent(
     onBoardings: List<OnBoardingItem>,
     moveToLogin: () -> Unit,
     modifier: Modifier = Modifier
-) { }
-//    val scope = rememberCoroutineScope()
-//    val pagerState = rememberPagerState(pageCount = { onBoardings.size })
-//    val (selectedPage, setSelectedPage) = remember {
-//        mutableIntStateOf(0)
-//    }
-//
-//    LaunchedEffect(pagerState) {
-//        snapshotFlow { pagerState.currentPage }.collect { page ->
-//            setSelectedPage(page)
-//        }
-//    }
-//
-//    Scaffold {
-//        Column(modifier = modifier.padding(it)) {
-//            HorizontalPager(
-//                state = pagerState,
-//                modifier = Modifier.weight(0.6f)
-//            ) { page ->
-//                Column(
-//                    horizontalAlignment = Alignment.CenterHorizontally,
-//                    verticalArrangement = Arrangement.Center,
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(24.dp)
-//                ) {
-//
-//                    Image(
-//                        painter = painterResource(id = onBoardings[page].resId),
-//                        contentDescription = "",
-//                        modifier = Modifier.height(280.dp)
-//                    )
-//                    Text(
-//                        text = onBoardings[page].title,
-//                        style = MaterialTheme.typography.titleLarge,
-//                        textAlign = TextAlign.Center,
-//                        fontWeight = FontWeight.SemiBold,
-//                        color = Color(0xFF756AB6)
-//                    )
-//                    Spacer(modifier = Modifier.height(24.dp))
-//                    Text(
-//                        text = onBoardings[page].description,
-//                        style = MaterialTheme.typography.bodyMedium,
-//                        textAlign = TextAlign.Center,
-//                        color = Color(0xFF756AB6)
-//                    )
-//                }
-//            }
-//
-//            Row(
-//                horizontalArrangement = Arrangement.Center,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(16.dp)
-//            ) {
-//                for (i in onBoardings.indices) {
-//                    Box(
-//                        modifier = Modifier
-//                            .padding(end = if (i == onBoardings.size - 1) 0.dp else 5.dp)
-//                            .width(if (i == selectedPage) 20.dp else 10.dp)
-//                            .height(10.dp)
-//                            .clip(RoundedCornerShape(10.dp))
-//                            .background(
-//                                if (i == selectedPage) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(
-//                                    alpha = 0.1f
-//                                )
-//                            )
-//                    )
-//                }
-//            }
-//
-//            if (selectedPage != onBoardings.size - 1) {
-//                Row(
-//                    horizontalArrangement = Arrangement.SpaceBetween,
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(16.dp)
-//                ) {
-//                    TextButton(
-//                        onClick = {
-//                            scope.launch {
-//                                pagerState.animateScrollToPage(onBoardings.size - 1)
-//                            }
-//                        },
-//                        modifier = Modifier.height(48.dp)
-//                    ) {
-//                        Text(
-//                            text = "Skip",
-//                            style = MaterialTheme.typography.bodyLarge
-//                        )
-//                    }
-//
-//                    Button(
-//                        onClick = {
-//                            scope.launch {
-//                                val nextPage = selectedPage + 1
-//                                pagerState.animateScrollToPage(nextPage)
-//                            }
-//                        },
-//                        modifier = Modifier.height(48.dp)
-//                    ) {
-//                        Text(
-//                            text = "Next",
-//                            style = MaterialTheme.typography.bodyLarge
-//                        )
-//                    }
-//                }
-//            }
-//
-//            if (selectedPage == onBoardings.size - 1) {
-//                Button(
-//                    onClick = {
-//                        moveToLogin()
-//                    },
-//                    modifier = Modifier
-//                        .padding(16.dp)
-//                        .fillMaxWidth()
-//                        .height(48.dp)
-//                        .clip(MaterialTheme.shapes.extraLarge)
-//                ) {
-//                    Text(
-//                        text = "Get Started",
-//                        style = MaterialTheme.typography.bodyLarge
-//                    )
-//                }
-//            }
-//        }
-//    }
-//}
+) {
+    val scope = rememberCoroutineScope()
+    val pagerState = rememberPagerState(pageCount = { onBoardings.size })
+    val (selectedPage, setSelectedPage) = remember {
+        mutableIntStateOf(0)
+    }
+
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect { page ->
+            setSelectedPage(page)
+        }
+    }
+
+    Scaffold {
+        Column(modifier = modifier.padding(it)) {
+            HorizontalPager(
+                state = pagerState,
+                modifier = Modifier.weight(0.6f)
+            ) { page ->
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(24.dp)
+                ) {
+
+                    Image(
+                        painter = painterResource(id = onBoardings[page].resId),
+                        contentDescription = "",
+                        modifier = Modifier.height(280.dp)
+                    )
+                    Text(
+                        text = onBoardings[page].title,
+                        style = MaterialTheme.typography.titleLarge,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF756AB6)
+                    )
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Text(
+                        text = onBoardings[page].description,
+                        style = MaterialTheme.typography.bodyMedium,
+                        textAlign = TextAlign.Center,
+                        color = Color(0xFF756AB6)
+                    )
+                }
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                for (i in onBoardings.indices) {
+                    Box(
+                        modifier = Modifier
+                            .padding(end = if (i == onBoardings.size - 1) 0.dp else 5.dp)
+                            .width(if (i == selectedPage) 20.dp else 10.dp)
+                            .height(10.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(
+                                if (i == selectedPage) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(
+                                    alpha = 0.1f
+                                )
+                            )
+                    )
+                }
+            }
+
+            if (selectedPage != onBoardings.size - 1) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                ) {
+                    TextButton(
+                        onClick = {
+                            scope.launch {
+                                pagerState.animateScrollToPage(onBoardings.size - 1)
+                            }
+                        },
+                        modifier = Modifier.height(48.dp)
+                    ) {
+                        Text(
+                            text = "Skip",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    }
+
+                    Button(
+                        onClick = {
+                            scope.launch {
+                                val nextPage = selectedPage + 1
+                                pagerState.animateScrollToPage(nextPage)
+                            }
+                        },
+                        modifier = Modifier.height(48.dp)
+                    ) {
+                        Text(
+                            text = "Next",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    }
+                }
+            }
+
+            if (selectedPage == onBoardings.size - 1) {
+                Button(
+                    onClick = {
+                        moveToLogin()
+                    },
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                        .height(48.dp)
+                        .clip(MaterialTheme.shapes.extraLarge)
+                ) {
+                    Text(
+                        text = "Get Started",
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
+            }
+        }
+    }
+}
