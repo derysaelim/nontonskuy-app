@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -124,6 +125,7 @@ fun ProfileContent(navController: NavController, onLogoutClick: () -> Unit) {
                                 CircleShape
                             )
                     )
+                    Spacer(modifier = Modifier.height(10.dp))
                     Text(
                         text = currentUser,
                         fontSize = 24.sp,

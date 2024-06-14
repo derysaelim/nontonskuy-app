@@ -11,7 +11,6 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -24,18 +23,21 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.widyawacana.nontonskuy.R
+import com.widyawacana.nontonskuy.data.local.dummy.DummyData.listBioskop
 import com.widyawacana.nontonskuy.ui.navigation.NavigationItem
 import com.widyawacana.nontonskuy.ui.navigation.Screen
-import com.widyawacana.nontonskuy.ui.presentasion.bioskop.BioskopScreen
+import com.widyawacana.nontonskuy.ui.presentasion.maps.BioskopScreen
+import com.widyawacana.nontonskuy.ui.presentasion.maps.MapsScreen
 import com.widyawacana.nontonskuy.ui.presentasion.home.HomeScreen
 import com.widyawacana.nontonskuy.ui.presentasion.login.LoginScreen
 import com.widyawacana.nontonskuy.ui.presentasion.profile.ProfileScreen
-import com.widyawacana.nontonskuy.ui.presentasion.splash.SplashScreen
 import com.widyawacana.nontonskuy.utils.shouldShowBottomBar
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -54,7 +56,7 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
     ) { contentPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Splash.route,
+            startDestination = Screen.Login.route,
             modifier = modifier.padding(contentPadding)
         ) {
             composable(Screen.Beranda.route) {
@@ -73,9 +75,9 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
                 ProfileScreen(navController = navController)
             }
 
-            composable(Screen.Splash.route) {
-                SplashScreen(navController = navController)
-            }
+//            composable(Screen.Splash.route) {
+//                SplashScreen(navController = navController)
+//            }
 
             composable(Screen.Login.route) {
                 LoginScreen(navController = navController)
@@ -85,14 +87,15 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
                 RegisterScreen(navController = navController)
             }
 
-//            composable(Screen.DetailResep.route + "/{id}",
-//                arguments = listOf(navArgument("id") { type = NavType.IntType })
-//            ) { navBackStackEntry ->
-//                DetailResepScreen(
-//                    navController = navController,
-//                    id = navBackStackEntry.arguments?.getInt("id")
-//                )
-//            }
+            composable(Screen.Maps.route + "/{id}",
+                arguments = listOf(navArgument("id") { type = NavType.IntType })
+            ) { navBackStackEntry ->
+                MapsScreen(
+                    navController = navController,
+                    listBioskop = listBioskop,
+                    id = navBackStackEntry.arguments?.getInt("id")
+                )
+            }
 
         }
     }

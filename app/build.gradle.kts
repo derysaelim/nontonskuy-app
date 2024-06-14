@@ -107,4 +107,7 @@ dependencies {
 
     //splash screen
     implementation("androidx.core:core-splashscreen:1.2.0-alpha01")
+
+    // gmaps
+    implementation("com.google.maps.android:maps-compose:4.3.3")
 }

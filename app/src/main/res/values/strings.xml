@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">nontonskuy-app</string>
+    <string name="app_name">Nontonskuy</string>
     <string name="menu_home">Beranda</string>
     <string name="menu_bioskop">Bioskop</string>
     <string name="menu_jadwal">Jadwal</string>

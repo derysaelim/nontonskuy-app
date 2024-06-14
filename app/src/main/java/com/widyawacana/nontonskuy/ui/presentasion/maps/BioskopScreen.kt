@@ -1,9 +1,7 @@
-package com.widyawacana.nontonskuy.ui.presentasion.bioskop
+package com.widyawacana.nontonskuy.ui.presentasion.maps
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,7 +23,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.widyawacana.nontonskuy.data.local.dummy.DummyData
 import com.widyawacana.nontonskuy.model.Bioskop
-import com.widyawacana.nontonskuy.ui.presentasion.bioskop.component.CardBioskopItem
+import com.widyawacana.nontonskuy.ui.navigation.Screen
+import com.widyawacana.nontonskuy.ui.presentasion.maps.component.CardBioskopItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,9 +54,8 @@ fun BioskopScreen(
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             items(bioskops, key = { it.id }) {
-                CardBioskopItem(listBioskop = it) {
-//                    id ->
-//                    navController.navigate(Screen.Detail.route + "/$id")
+                CardBioskopItem(listBioskop = it) { id ->
+                    navController.navigate(Screen.Maps.route + "/$id")
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.widyawacana.nontonskuy.ui.presentasion.bioskop.component
+package com.widyawacana.nontonskuy.ui.presentasion.maps.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
