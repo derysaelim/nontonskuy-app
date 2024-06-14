@@ -3,8 +3,6 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 
     id("kotlin-kapt")
-    alias(libs.plugins.google.gms.google.services)
-    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -64,8 +62,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.firebase.auth.ktx)
-    implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -74,37 +70,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // navigation
-    implementation("androidx.navigation:navigation-compose:2.7.7")
-
-    // material 3
-    implementation("androidx.compose.material3:material3:1.3.0-beta01")
-
-    // Room
     implementation ("androidx.room:room-runtime:2.5.0")
     kapt ("androidx.room:room-compiler:2.5.0")
-
-    // Lifecycle
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0")
     implementation ("androidx.room:room-ktx:2.5.0")
-
-    // coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.2")
-
-    // Data-Store
-    implementation("androidx.datastore:datastore-preferences:1.1.1")
-
-    // hilt
-    implementation("com.google.dagger:hilt-android:2.48.1")
-    kapt("com.google.dagger:hilt-compiler:2.48.1")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-
-    // firebase
-    // google auth
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
-
-    //splash screen
-    implementation("androidx.core:core-splashscreen:1.2.0-alpha01")
 }
