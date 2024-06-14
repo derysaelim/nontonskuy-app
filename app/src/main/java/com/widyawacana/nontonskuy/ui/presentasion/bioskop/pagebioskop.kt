@@ -2,6 +2,7 @@ package com.widyawacana.nontonskuy.ui.presentasion.bioskop
 
 //import coil.compose.rememberImagePainter
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,10 +25,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.widyawacana.nontonskuy.model.Movie
 import com.widyawacana.nontonskuy.viewmodel.MovieViewModel
 
@@ -87,15 +91,14 @@ fun MovieCard(movie: Movie) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             val posterUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"
-//            DISINI COIL TIDAK TERPANGGIL
-//            Image(
-//                painter = rememberImagePainter(posterUrl),
-//                contentDescription = movie.title,
-//                modifier = Modifier
-//                    .height(180.dp) // Set image height to 200dp
-//                    .fillMaxWidth()
-//                    .clip(RoundedCornerShape(8.dp))
-//            )
+            AsyncImage(
+                model = posterUrl,
+                contentDescription = movie.title,
+                modifier = Modifier
+                    .height(180.dp) // Set image height to 200dp
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+            )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = movie.title,

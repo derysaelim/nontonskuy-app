@@ -25,22 +25,35 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.firebase.auth.FirebaseAuth
 import com.widyawacana.nontonskuy.R
+import com.widyawacana.nontonskuy.data.local.datastore.DataStore
+import com.widyawacana.nontonskuy.ui.presentasion.bioskop.MovieCard
+import com.widyawacana.nontonskuy.viewmodel.MovieViewModel
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
     val currentUser = FirebaseAuth.getInstance().currentUser?.email?.substringBefore("@") ?: "N/A"
+//    val movies by viewModel.movies.observeAsState(emptyList())
+    val context = LocalContext.current
+    val corountineScope = rememberCoroutineScope()
+
+    val dataStore = DataStore(context)
 
     LazyColumn(
         modifier = Modifier
@@ -119,6 +132,10 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
                 Text("See all", fontSize = 12.sp, fontWeight = FontWeight.Normal, color = Color(0xFF756AB6))
             }
         }
+
+//        items(movies.size) { index ->
+//            MovieCard(movie = movies[index])
+//        }
     }
 }
 

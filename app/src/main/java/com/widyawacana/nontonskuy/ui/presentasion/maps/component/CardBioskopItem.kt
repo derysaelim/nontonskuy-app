@@ -1,4 +1,4 @@
-package com.widyawacana.nontonskuy.ui.presentasion.bioskop.component
+package com.widyawacana.nontonskuy.ui.presentasion.maps.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import com.widyawacana.nontonskuy.R
 import com.widyawacana.nontonskuy.model.Bioskop
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CardBioskopItem(
     modifier: Modifier = Modifier,

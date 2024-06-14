@@ -3,6 +3,7 @@ package com.widyawacana.nontonskuy.ui.presentasion.login
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
@@ -52,6 +53,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.widyawacana.nontonskuy.R
+import com.widyawacana.nontonskuy.data.local.datastore.DataStore
 import com.widyawacana.nontonskuy.ui.navigation.Screen
 import com.widyawacana.nontonskuy.utils.Constant.CLIENT
 import kotlinx.coroutines.launch
@@ -65,6 +67,8 @@ fun LoginScreen(
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
+    val dataStore = DataStore(context)
+
     val state = viewModel.state.collectAsState(initial = null)
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -115,6 +119,8 @@ fun LoginScreen(
                             email = ""
                             password = ""
                         }
+                        //
+                        dataStore.saveStatus(true)
                     }
                 }
             },

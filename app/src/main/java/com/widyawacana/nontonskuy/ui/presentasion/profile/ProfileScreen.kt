@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,6 +28,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,12 +46,19 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.widyawacana.nontonskuy.R
+import com.widyawacana.nontonskuy.data.local.datastore.DataStore
 import com.widyawacana.nontonskuy.ui.navigation.Screen
 import com.widyawacana.nontonskuy.utils.Constant.CLIENT
+import kotlinx.coroutines.launch
 
 @Composable
 fun ProfileScreen(navController: NavController, context: Context = LocalContext.current) {
     var isSignedOut by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+    val corountineScope = rememberCoroutineScope()
+
+    val dataStore = DataStore(context)
+
 
     if (isSignedOut) {
         LaunchedEffect(Unit) {
@@ -73,6 +82,9 @@ fun ProfileScreen(navController: NavController, context: Context = LocalContext.
                 if (task.isSuccessful) {
                     FirebaseAuth.getInstance().signOut()
                     isSignedOut = true
+                    corountineScope.launch {
+                        dataStore.clearStatus()
+                    }
                 } else {
                     Toast.makeText(
                         context,
@@ -124,6 +136,7 @@ fun ProfileContent(navController: NavController, onLogoutClick: () -> Unit) {
                                 CircleShape
                             )
                     )
+                    Spacer(modifier = Modifier.height(10.dp))
                     Text(
                         text = currentUser,
                         fontSize = 24.sp,
