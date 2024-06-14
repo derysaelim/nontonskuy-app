@@ -9,4 +9,3 @@ package com.widyawacana.nontonskuy.data.Database
 //abstract class AppDatabase : RoomDatabase() {
 //    abstract fun reminderDao(): ReminderDao
 //}
-

@@ -33,11 +33,14 @@ import com.widyawacana.nontonskuy.R
 import com.widyawacana.nontonskuy.data.local.dummy.DummyData.listBioskop
 import com.widyawacana.nontonskuy.ui.navigation.NavigationItem
 import com.widyawacana.nontonskuy.ui.navigation.Screen
+import com.widyawacana.nontonskuy.ui.presentasion.alarm.AlarmScreen
 import com.widyawacana.nontonskuy.ui.presentasion.maps.BioskopScreen
 import com.widyawacana.nontonskuy.ui.presentasion.maps.MapsScreen
 import com.widyawacana.nontonskuy.ui.presentasion.home.HomeScreen
 import com.widyawacana.nontonskuy.ui.presentasion.login.LoginScreen
+import com.widyawacana.nontonskuy.ui.presentasion.onboarding.OnboardingScreen
 import com.widyawacana.nontonskuy.ui.presentasion.profile.ProfileScreen
+import com.widyawacana.nontonskuy.ui.presentasion.splash.SplashScreen
 import com.widyawacana.nontonskuy.utils.shouldShowBottomBar
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -56,7 +59,7 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
     ) { contentPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Login.route,
+            startDestination = Screen.Splash.route,
             modifier = modifier.padding(contentPadding)
         ) {
             composable(Screen.Beranda.route) {
@@ -68,16 +71,20 @@ fun NontonSkuyApp(modifier: Modifier = Modifier, navController: NavHostControlle
             }
 
             composable(Screen.Jadwal.route) {
-                HomeScreen(navController = navController)
+                AlarmScreen()
             }
 
             composable(Screen.Profile.route) {
                 ProfileScreen(navController = navController)
             }
 
-//            composable(Screen.Splash.route) {
-//                SplashScreen(navController = navController)
-//            }
+            composable(Screen.Splash.route) {
+                SplashScreen(navController = navController)
+            }
+
+            composable(Screen.Onboarding.route) {
+                OnboardingScreen(navController = navController)
+            }
 
             composable(Screen.Login.route) {
                 LoginScreen(navController = navController)

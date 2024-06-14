@@ -1,10 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-
-    id("kotlin-kapt")
-    alias(libs.plugins.google.gms.google.services)
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.googleGmsGoogleServices)
+    id("kotlin-parcelize")
+    id ("kotlin-kapt")
+    id ("com.google.dagger.hilt.android")
 }
 
 android {
@@ -64,8 +64,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.firebase.auth.ktx)
-    implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.firebase.auth)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -74,20 +73,28 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // navigation
-    implementation("androidx.navigation:navigation-compose:2.7.7")
-
-    // material 3
-    implementation("androidx.compose.material3:material3:1.3.0-beta01")
-
-    // Room
     implementation ("androidx.room:room-runtime:2.5.0")
     kapt ("androidx.room:room-compiler:2.5.0")
-
-    // Lifecycle
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0")
     implementation ("androidx.room:room-ktx:2.5.0")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    // Lottie
+    implementation("com.airbnb.android:lottie-compose:6.1.0")
+
+    // Retrofit for API requests
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // ViewModel and LiveData
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
+    implementation ("androidx.lifecycle:lifecycle-livedata:2.3.1")
+
+    // permission
+    implementation ("com.google.accompanist:accompanist-permissions:0.30.1")
 
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")

@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import com.widyawacana.nontonskuy.R
 import com.widyawacana.nontonskuy.model.Bioskop
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CardBioskopItem(
     modifier: Modifier = Modifier,
