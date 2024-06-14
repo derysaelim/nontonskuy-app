@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "382720691234",
+    "project_id": "nontonskuy-app",
+    "storage_bucket": "nontonskuy-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382720691234:android:bbc72cd9f59e332c278e7b",
+        "android_client_info": {
+          "package_name": "com.widyawacana.nontonskuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382720691234-6e8at93dmdiam7bjqfcrev1a67euae2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI13A_-6qEP9Ba_bU7Rq6QcQrePcS_dZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382720691234-6e8at93dmdiam7bjqfcrev1a67euae2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
